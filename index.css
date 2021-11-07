@@ -1,0 +1,135 @@
+#clear-all{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    color: rgb(255, 72, 0);
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    box-shadow: 0px 0px 1.5px rgb(255, 72, 0);
+}
+
+#clear-all:hover{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    color: rgb(255, 72, 0);
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    box-shadow: 0px 0px 5px rgb(255, 72, 0);
+}
+
+
+#msg-success{
+    border-radius: 5px;
+    color: rgb(8, 117, 206);
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: small;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+#render-btn, #input-btn-curr, button{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(8, 185, 185);
+    border-radius: 5px;
+    color: rgb(8, 185, 185);
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    box-shadow: 0px 0px 1.5px rgb(8, 185, 185);
+}
+
+#render-btn:hover, #input-btn-curr:hover, button:hover{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(8, 185, 185);
+    border-radius: 5px;
+    color: rgb(8, 185, 185);
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    box-shadow: 0px 0px 15px rgb(8, 185, 185);
+}
+
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    min-width: 400px
+}
+
+footer{
+    margin-top: 50px;
+    text-align: center;
+}
+
+input{
+    background-color: rgba(24, 180, 180, 0.623);
+    border: 2px solid rgb(19, 95, 95);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 5px;
+    box-shadow: 0px 0px 1.5px rgb(8, 185, 185);
+    width: 70%;
+}
+
+input:hover{
+    background-color: rgba(8, 185, 185, 0.712);
+    border: 2px solid rgb(19, 95, 95);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 5px;
+    box-shadow: 0px 0px 1.5px rgb(8, 185, 185);
+    width: 70%;
+}
+
+
+li{
+    margin-top: 5px;
+}
+
+li a{
+    color: rgb(8, 185, 185);
+}
+
+ol{
+    border-radius: 5px;
+    color: rgba(30, 136, 48, 0.733);
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    padding: 5px;
+    margin-left: 10px;
+    width: auto;
+}
+
+li a{
+    border-radius: 5px;
+    color: rgb(28, 157, 189);
+    font-size: smaller;
+    font-weight: lighter;
+    width: auto;
+}
+
+li a:hover{
+    border-radius: 5px;
+    color: rgb(8, 125, 155);
+    font-size: small;
+    font-weight: lighter;
+    width: auto;
+    text-shadow: 0px 0px .5px rgb(28, 157, 189);
+}
