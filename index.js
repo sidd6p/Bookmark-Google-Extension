@@ -1,5 +1,6 @@
 const inputBtn = document.getElementById("input-btn");
 const inputBtnCurr = document.getElementById("input-btn-curr");
+const inputBtnAll = document.getElementById("input-btn-all");
 const inputEl = document.getElementById("input-el");
 const msgSuccess = document.getElementById("msg-success");
 const renderBtn = document.getElementById("render-btn");
@@ -7,6 +8,7 @@ const ulE = document.getElementById("ul-l");
 const clearAll = document.getElementById("clear-all");
 
 
+inputBtnAll.addEventListener("click", submitBtnAll);
 clearAll.addEventListener("click", clearList);
 inputBtn.addEventListener("click", submitBtn);
 inputBtnCurr.addEventListener("click", submitBtnCurr);
@@ -72,17 +74,41 @@ function submitBtn(){
 }
 
 function submitBtnCurr(){
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        submitLink(tabs[0].url);
-    })
+    function logtabs(tabs) {
+        var data = {};
+        data.title = tabs[0].title.toUpperCase();
+        data.url = tabs[0].url
+        submitLink(data);
+    }
+    function onError(error) {
+        alert("Error is");
+    }
+    let querying = chrome.tabs.query({active: true, currentWindow: true})
+    querying.then(logtabs, onError);
 }
 
-function submitLink(link){
+function submitBtnAll(){
+    function logtabs(tabs) {
+        for (let tab of tabs) {
+            var data = {};
+            data.title = tab.title;
+            data.url = tab.url;
+            submitLink(data);
+        }
+    }
+    function onError(error) {
+        alert("Error is");
+    }
+    let querying = chrome.tabs.query({currentWindow: true})
+    querying.then(logtabs, onError);
+}
+
+function submitLink(data){
     let myLeads = [];
     if (localStorage.leadKey){
         myLeads = JSON.parse(localStorage.leadKey);
-        if (myLeads.indexOf(link) == -1){
-            myLeads.push(link);
+        if (myLeads.indexOf(data) == -1){
+            myLeads.push(data);
             localStorage.leadKey = JSON.stringify(myLeads);
             modifyMessage("show");
         }
@@ -91,7 +117,7 @@ function submitLink(link){
         }
     }
     else{
-        myLeads.push(link);
+        myLeads.push(data);
         localStorage.leadKey = JSON.stringify(myLeads);
         modifyMessage("show");
     }
@@ -105,8 +131,8 @@ function renderData(){
             for (let i=0; i<myLeads.length; i++){
                 data += `
                 <li>
-                    <a target=_blank href= ${myLeads[i]}>
-                        ${myLeads[i]}
+                    <a target=_blank href= ${myLeads[i].url}>
+                        ${myLeads[i].title}
                     </a>
                 </li>
                 `;
