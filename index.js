@@ -6,8 +6,9 @@ const msgSuccess = document.getElementById("msg-success");
 const renderBtn = document.getElementById("render-btn");
 const ulE = document.getElementById("ul-l");
 const clearAll = document.getElementById("clear-all");
+const folder = document.getElementById("folder");
 
-
+folder.addEventListener("click", all);
 inputBtnAll.addEventListener("click", submitBtnAll);
 clearAll.addEventListener("click", clearList);
 inputBtn.addEventListener("click", submitBtn);
@@ -76,7 +77,7 @@ function submitBtn(){
 function submitBtnCurr(){
     function logtabs(tabs) {
         var data = {};
-        data.title = tabs[0].title.toUpperCase();
+        data.title = tabs[0].title;
         data.url = tabs[0].url
         submitLink(data);
     }
@@ -107,15 +108,10 @@ function submitLink(data){
     let myLeads = [];
     if (localStorage.leadKey){
         myLeads = JSON.parse(localStorage.leadKey);
-        if (myLeads.indexOf(data) == -1){
             myLeads.push(data);
             localStorage.leadKey = JSON.stringify(myLeads);
             modifyMessage("show");
         }
-        else{
-            modifyMessage("alreadyHas");
-        }
-    }
     else{
         myLeads.push(data);
         localStorage.leadKey = JSON.stringify(myLeads);
@@ -144,3 +140,18 @@ function renderData(){
     }
 }   
 
+
+function all() {
+    let data = '';
+    data += `<select name="cars" id="cars">`;
+    let all_folders = JSON.parse(localStorage.leadKey);
+    for (let i=0; i<all_folders.length; i++){
+        data += `
+        <option value=${all_folders[i]}>
+            ${all_folders[i]}    
+        </option>
+        `;
+    }
+    data += `</select>`;
+    document.getElementById("demo").innerHTML = data;
+}
